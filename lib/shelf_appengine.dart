@@ -59,7 +59,7 @@ Handler assetHandler(
 
   ae.loggingService.warning('url: ' + request.requestedUri.toString());
   var path = request.url.path;
-  var indexPath = '/' + p.join(path, indexFileName);
+  var indexPath = p.join(path, indexFileName);
 
   bool isBarePath = false;
   if (path.isEmpty) {
@@ -82,6 +82,10 @@ Handler assetHandler(
         DirectoryIndexServeMode.REDIRECT_PERMANENT) {
       return new Response.movedPermanently(indexPath);
     }
+  }
+
+  if (!path.startsWith('/')) {
+    path = '/' + path;
   }
 
   ae.loggingService.warning("Trying for '$path'.");
