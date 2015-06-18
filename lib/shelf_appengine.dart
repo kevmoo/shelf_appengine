@@ -59,9 +59,7 @@ Handler assetHandler(
 
   ae.loggingService.warning('url: ' + request.requestedUri.toString());
   var path = request.url.path;
-  var indexPath = p.join(path, indexFileName);
-
-  ae.loggingService.warning([request.handlerPath, path, indexPath].toString());
+  var indexPath = '/' + p.join(path, indexFileName);
 
   bool isBarePath = false;
   if (path.isEmpty) {
